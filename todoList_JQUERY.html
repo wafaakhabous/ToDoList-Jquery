@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>TODO LIST</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+
+
+
+    <!-- ----------------------------------------------- HTML FORM ----------------------------------------------------- -->
+    
+    
+    
+    
+    <div style="align-items: center; text-align: center; font-weight: bold; ">
+
+      <br><br>  <h2>TO-DO LIST </h2> 
+      
+      </div><br><br>
+      <hr width="130%" color="black">
+    <div class="container">
+      
+      <br><br>
+      <input type="text" class="txtb" placeholder="Tapez une tache ici...">
+      <div class="list">
+        <br><br>
+        <h3 style="font-family:Georgia, 'Times New Roman', Times, serif;
+         font-weight: 100; color: rgb(0, 0, 0);  margin: 10px 0;text-decoration: underline;
+         ">Liste des taches :</h3>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- ----------------------------------------------- SCRIPT ----------------------------------------------------- -->
+
+
+
+
+
+
+
+
+
+
+    <script >
+      $(".txtb").on("keyup",function(e){
+        //13  represente le bouton entrer ==> si on clique entre la fonction suivante s'execute:
+        if(e.keyCode == 13 && $(".txtb").val() != "")
+        {
+          //la variable task est pour contenir la tache ajoutée 
+          var tache = $("<div class='task'></div>").text($(".txtb").val());
+          var supprimer = $("<i class='fas fa-trash-alt'></i>").click(
+            function(){
+            var p = $(this).parent();
+            p.fadeOut(function(){
+              p.remove();
+            });
+          });
+
+           var check = $("<i class='fas fa-check'></i>").click(function(){
+          if ($(this).parent().css('text-decoration-line') == "none")
+          $(this).parent().css('text-decoration-line', 'line-through');
+                else
+                    $(this).parent().css('text-decoration-line', 'none');
+           });
+
+           tache.append(supprimer,check);
+          $(".list").append(tache);
+            //to clear the input
+          $(".txtb").val("");
+        }
+      });
+    </script>
+
+
+
+
+
+
+    <!-- ----------------------------------------------- FEUILLE DE STYLE ----------------------------------------------------- -->
+
+<style>
+  *{
+  margin: 0;
+  padding: 0;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  box-sizing: border-box;
+}
+
+body{
+  background-image: linear-gradient(130deg,#b8d672,#7a1b1b);
+  min-height: 100vh;
+}
+
+
+.container{
+  max-width: 800px;
+  margin: auto;
+  padding: 10px;
+}
+
+.txtb{
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #000;
+  background: none;
+  padding: 10px;
+  font-size: 18px;
+  outline: none;
+
+}
+
+
+
+.task{
+  
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 10px;
+  font-size: 18px;
+outline-color: burlywood;
+background-color: rgba(213, 210, 255, 0.705);
+}
+
+.task i{
+  float: right;
+  margin-left: 20px;
+}
+
+
+</style>
+
+  </body>
+</html>
